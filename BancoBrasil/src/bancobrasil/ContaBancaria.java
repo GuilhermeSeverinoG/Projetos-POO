@@ -1,27 +1,46 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package bancobrasil;
 
 /**
- *
- * @author programador
+ * @author Guilherme Severino Galvão
  */
 public class ContaBancaria {
-    //Atributos (caractersisticas) da classe
-    String agencia, conta, proprietario;
+    //Atributos(caracteristicas) da classe
+    String agencia;
+    String conta;
     double saldo;
+    Usuario proprietario;
     
-    //Métodos da classe
-    void depositar(){
+    //Metodos (comportamentos) da classe
+    void depositar(double valor){  //Método com parâmetro
+        this.saldo += valor;
+        
     }
-    void sacar(){
+    
+    void sacar(double valor){ //Método com parâmetro
+        //Insuficiência de saldo
+        if(valor>this.saldo){
+            System.out.println("O seu saldo é insuficiente");
+        }else{
+            //Saque normal
+            this.saldo -= valor;
+        }
+        
     }
+    
     void transferir(){
     }
-    String consultarSaldo(){
-        return "";
+    
+    String consultarSaldo(){  //Método sem parâmetro
+        //String.format() método da classe String para utilizar formatação com
+        //identificadores(%d , %f , %s , %.2f)
+        return String.format("Seu saldo é: R$ %.2f",this.saldo);
     }
+    
+    
+    
+    
+    
+    
     
 }
