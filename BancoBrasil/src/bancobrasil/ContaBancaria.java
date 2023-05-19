@@ -6,11 +6,46 @@ package bancobrasil;
  */
 public class ContaBancaria {
     //Atributos(caracteristicas) da classe
-    String agencia;
-    String conta;
-    double saldo;
-    Usuario proprietario;
+    private String agencia;
+    private String conta;
+    private double saldo;
+    private Usuario proprietario;
     
+    //Método construtor
+    public ContaBancaria(){}
+
+    public ContaBancaria(String agencia,String conta,double saldo,Usuario proprietario){
+        this.agencia=agencia;
+        this.conta=conta;
+        this.saldo=saldo;
+        this.proprietario=proprietario;
+    }
+    //Métodos Getters e Setters
+    public String getAgencia(){
+        return agencia;
+    }
+    public String getConta(){
+        return conta;
+    }
+    public String getSaldo(){
+        return saldo;
+    }
+    public String getProprietario(){
+        return proprietario;
+    }
+    public void setAgencia(String agencia){
+        this.agencia=agencia;
+    }
+    public void setConta(String conta){
+        this.conta=conta;
+    }
+    public void setSaldo(String saldo){
+        this.saldo=saldo;
+    }
+    public void setProprietario(String proprietario){
+        this.proprietario=proprietario;
+    }
+
     //Metodos (comportamentos) da classe
     void depositar(double valor){  //Método com parâmetro
         this.saldo += valor;
@@ -28,7 +63,14 @@ public class ContaBancaria {
         
     }
     
-    void transferir(){
+    void transferir(ContaBancaria contabancaria, double valor){
+        if(valor<=saldo){
+            this.sacar(valor);
+            contabancaria.saldo += valor;
+        }
+        else{
+            System.out.println("Saldo insuficiente");
+        }      
     }
     
     String consultarSaldo(){  //Método sem parâmetro
